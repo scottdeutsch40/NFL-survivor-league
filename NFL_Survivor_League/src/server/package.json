@@ -2,9 +2,10 @@
   "name": "server",
   "version": "1.0.0",
   "description": "NFL Survivor League Server",
-  "main": "server.js",
+  "main": "server.ts",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "start": "ts-node server.ts"
   },
   "keywords": [
     "[]"
