@@ -4,13 +4,13 @@ import cors from "cors";
 const app: Express = express();
 const PORT = 3876;
 
+//middleware
+app.use(cors({ credentials: true, origin: "http://localhost:3000"}));
+app.use(express.json());
+
 //router
 import router from './routes/index';
-app.use('/', router)
-
-//middleware
-app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
-app.use(express.json());
+app.use('/api', router)
 
 //global error handling
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {

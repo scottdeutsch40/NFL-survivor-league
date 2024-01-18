@@ -4,6 +4,7 @@ const router = express.Router();
 
 //Controllers
 import adminRegistrationController from '../controllers/adminRegistrationController'
+import dashboardControlleController from '../controllers/dashboardController'
 //Login
     //Google OAuth
 
@@ -13,20 +14,25 @@ import adminRegistrationController from '../controllers/adminRegistrationControl
 
 //Admin Registration Page
     //POST request to create new league
-    router.post('/createLeague', adminRegistrationController.signup, (req: Request, res: Response) => {
-        return res.status(200)
+    router.get('/createLeague', (req: Request, res: Response) => {
+        console.log("hey scottie")
+        return res.status(200).send("deez")
     })
     //POST profile photo (see earlier route)
 
 //League dashboard
     //GET pick data (how to configure standings TBD)
+    //GET team values
+    router.get('/getTeam', dashboardControlleController.getTeam, (req: Request, res: Response) => {
+        return res.status(200).send(res.locals.teamInfo)
+    })
     //GET photos
 
 //Player Page
     //POST pick
     //PATCH pick
 
-//Admin Pae
+//Admin Page
     //POST point values
     //PATCH point values
     //PATCH pick

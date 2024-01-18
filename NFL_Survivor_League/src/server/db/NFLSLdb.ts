@@ -7,7 +7,7 @@ const pool = new Pool({
 });
 
 export default {
-  query: (text : string, params : [], callback : any) => {
+  query: (text : string, params? : (number | string)[], callback? : any) => {
     // console.log('executed query', text);
     return pool.query(text, params, callback);
   }
