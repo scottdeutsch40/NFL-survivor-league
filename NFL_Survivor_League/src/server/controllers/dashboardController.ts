@@ -13,5 +13,15 @@ dashboardController.getTeam = async (req, res, next) => {
   }
 };
 
+dashboardController.getPickData = async (req, res, next) => {
+  try {
+    const { year, league_id } = req.body;
+    res.locals.picks = await dashboardService.getPickData(year, league_id);
+    return next();
+  } catch (err) {
+    return next(err);
+  }
+};
+
 
 export default dashboardController;
