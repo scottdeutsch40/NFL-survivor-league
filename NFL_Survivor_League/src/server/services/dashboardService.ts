@@ -24,7 +24,7 @@ WHERE
     AND tv.league_id = $2;
 `
     const params = [year, league_id];
-    let picks = await db.query(query, params);
+    const picks = await db.query(query, params);
     return picks.rows;
 }
 

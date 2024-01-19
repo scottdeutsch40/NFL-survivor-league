@@ -13,7 +13,7 @@ import router from './routes/index';
 app.use('/api', router)
 
 //global error handling
-app.use((err: Error, req: Request, res: Response) => {
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   console.log(err)
     return res.sendStatus(500);
   });

@@ -5,7 +5,8 @@ const router = express.Router();
 //Controllers
 import adminRegistrationController from '../controllers/adminRegistrationController'
 import dashboardController from '../controllers/dashboardController'
-import playerPageController from '../controllers/dashboardController'
+import playerPageController from '../controllers/playerPageController'
+
 //Login
     //Google OAuth
     //GET id, Admin ID, leagueID
@@ -36,7 +37,13 @@ import playerPageController from '../controllers/dashboardController'
     })
 
     //POST pick
+    router.post('/postPick', playerPageController.postPick, (req: Request, res: Response) => {
+        return res.status(200).send("pick posted")
+    })
     //PATCH pick
+    router.patch('/patchPick', playerPageController.patchPick, (req: Request, res: Response) => {
+        return res.status(200).send("pick updated")
+    })
 
 //Admin Page
     //POST point values
