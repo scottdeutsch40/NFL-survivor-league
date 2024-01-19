@@ -1,3 +1,3 @@
 export interface Service {
-    [key: string]: (params: any) => Promise<any>;
+    [key: string]: (...params: any[]) => Promise<any>;
   }
