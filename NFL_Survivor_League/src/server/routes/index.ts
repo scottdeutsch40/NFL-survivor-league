@@ -4,8 +4,8 @@ const router = express.Router();
 
 //Controllers
 import adminRegistrationController from '../controllers/adminRegistrationController'
-import dashboardControlleController from '../controllers/dashboardController'
-
+import dashboardController from '../controllers/dashboardController'
+import playerPageController from '../controllers/dashboardController'
 //Login
     //Google OAuth
     //GET id, Admin ID, leagueID
@@ -23,20 +23,19 @@ import dashboardControlleController from '../controllers/dashboardController'
     //POST profile photo (see earlier route)
 
 //League dashboard
-    //GET pick data (how to configure standings TBD)
-    //Want to return first and last name of pick, team name, abrev, value, week
-    router.get('/getPickData', dashboardControlleController.getPickData, (req: Request, res: Response) => {
+    //GET pick data
+    router.get('/getPickData', dashboardController.getPicks, (req: Request, res: Response) => {
         return res.status(200).send(res.locals.picks)
     })
     //GET photos
 
 //Player Page
     //GET team values
-    router.get('/getTeams', dashboardControlleController.getTeam, (req: Request, res: Response) => {
-        return res.status(200).send(res.locals.teamInfo)
+    router.get('/getTeamValues', playerPageController.getTeamValues, (req: Request, res: Response) => {
+        return res.status(200).send(res.locals.teamValues)
     })
-    //POST pick
 
+    //POST pick
     //PATCH pick
 
 //Admin Page
