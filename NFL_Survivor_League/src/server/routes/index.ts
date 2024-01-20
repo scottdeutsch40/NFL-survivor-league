@@ -6,6 +6,7 @@ const router = express.Router();
 import adminRegistrationController from '../controllers/adminRegistrationController'
 import dashboardController from '../controllers/dashboardController'
 import playerPageController from '../controllers/playerPageController'
+import adminPageController from '../controllers/adminPageController'
 
 //Login
     //Google OAuth
@@ -38,17 +39,38 @@ import playerPageController from '../controllers/playerPageController'
 
     //POST pick
     router.post('/postPick', playerPageController.postPick, (req: Request, res: Response) => {
-        return res.status(200).send("pick posted")
+        if (res.locals.postPickSuccess) return res.status(200).send("pick posted");
+        else return res.status(500).send("Error: pick not posted");
     })
+
     //PATCH pick
     router.patch('/patchPick', playerPageController.patchPick, (req: Request, res: Response) => {
-        return res.status(200).send("pick updated")
+        if (res.locals.patchPickSuccess) return res.status(200).send("pick updated");
+        else return res.status(500).send("Error: pick not updated");
     })
 
 //Admin Page
-    //POST point values
-    //PATCH point values
-    //PATCH pick
+    //GET team IDs
+    router.get('/getTeamIDs', adminPageController.getTeamIDs, (req: Request, res: Response) => {
+        return res.status(200).send(res.locals.teamIDs)
+    })
 
+    //POST team point values
+    router.post('/postTeamPointValue', adminPageController.postTeamPointValue, (req: Request, res: Response) => {
+        if (res.locals.postTeamPointValueSuccess) return res.status(200).send("team value posted");
+        else return res.status(200).send("Error: team value not posted");
+    })
+
+    //PATCH point values
+    router.patch('/patchTeamPointValue', adminPageController.patchTeamPointValue, (req: Request, res: Response) => {
+        if (res.locals.patchTeamPointValue) return res.status(200).send("team point value updated");
+        else return res.status(200).send("Error: team point value was not updated");
+    })
+
+    //PATCH pick
+    router.patch('/adminPatchPick', adminPageController.patchPick, (req: Request, res: Response) => {
+        if (res.locals.patchPickSuccess) return res.status(200).send("pick updated by admin")
+        else return res.status(500).send("Error: pick was not updated")
+    })
 
 export default router;
