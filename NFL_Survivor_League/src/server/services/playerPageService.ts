@@ -38,7 +38,6 @@ playerPageService.postPick = async (user_id : number, team_id : number, week : n
 }
 
 playerPageService.patchPick = async (user_id : number, team_id : number, week : number, year : number, league_id : number) => {
-    console.log('here')
     const query = `
     UPDATE
         picks
